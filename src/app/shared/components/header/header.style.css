@@ -1,0 +1,44 @@
+#new-header {
+    padding-top: 8px;
+    height: 78px;
+    border-bottom: 1px solid #bfbfbf;
+    overflow-y: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    background: #fff;
+    width: 100vw;
+}
+#new-header > .new-header--left {
+    width: 50%;
+    float: left;
+    padding-left: 124px;
+}
+#new-header > .new-header--right {
+    padding-top: 14px;
+    align-content: right;
+    float: right;
+}
+#new-header > .new-header--right > span.notifications {
+    font-size: 14px;
+    margin-right: 12px;
+}
+#new-header > .new-header--right > span.search-bar > i.material-icons {
+    font-size: 12px;
+    margin-right: 4px;
+    color: grey;
+}
+
+#new-header > .new-header--right > span.search-bar > input {
+    border: none;
+}
+#new-header > .new-header--right > span.search-bar > input:focus {
+    outline: none;
+    outline-color: transparent;
+}
+
+#header-padding {
+    height: 78px;
+    width: 100vw;
+}

@@ -1,0 +1,15 @@
+.login{
+    height: 260px;
+    width: 300px;
+    text-align: center;
+    margin: auto;
+}
+
+.login .ui-g .ui-g-12 {
+    padding: 20px 20px; }
+
+.login .alert{
+    text-align: left;
+    color: #e62a10;
+    font-size: 12px;
+}

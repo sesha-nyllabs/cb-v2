@@ -1,0 +1,25 @@
+<div [ngClass]="{'layout-menu':true,'layout-menu-dark':darkMenu}" id="menu-container">
+    <div class="nano">
+        <div class="nano-content menu-scroll-content">
+
+
+            <ul id="main-menu" class="ultima-menu clearfix">
+                <li *ngFor="let navLink of navLinks" role="menuitem">
+                    <a [routerLink]="navLink.route" [routerLinkActive]="['active-menulink']" [routerLinkActiveOptions]="{exact:
+true}">
+                        <i class="material-icons">{{navLink.materialIcon}}</i>
+                        <span>{{navLink.label}}</span>
+                    </a>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+

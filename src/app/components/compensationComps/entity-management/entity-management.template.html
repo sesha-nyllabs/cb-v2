@@ -1,0 +1,248 @@
+<p-growl [value]="uwNotification" (click)="onClickNotif()"></p-growl>
+<div class="card">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <p-growl [value]="msgs"></p-growl>
+
+
+            <div>
+
+                <h1>Entity Management</h1>
+
+
+                <p-tabView>
+
+
+                    <p-tabPanel header="View Entities" leftIcon="ui-icon-view-agenda">
+
+
+                        <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+                            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                            <input #gb type="text" pInputText size="50" placeholder="Search">
+                        </div>
+
+
+                        <p-dataTable [value]="entities" selectionMode="single" [(selection)]="selectedEntity" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="7" [responsive]="true" [globalFilter]="gb">
+                            <p-column field="role" header="Entity Type" [sortable]="true"></p-column>
+                            <p-column field="name" header="Entity Name" [sortable]="true"></p-column>
+                            <p-column field="rule" header="Rule" [sortable]="true"></p-column>
+                        </p-dataTable>
+
+
+                        <p-dialog header="Entity Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+                            <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="entity">
+
+
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-4"><label for="role">Entity Type</label></div>
+                                    <div class="ui-grid-col-8"><input pInputText id="role" [(ngModel)]="entity.role" /></div>
+                                </div>
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-4"><label for="name">Name</label></div>
+                                    <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="entity.name" /></div>
+                                </div>
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-4"><label for="address">Address</label></div>
+                                    <div class="ui-grid-col-8"><input pInputText id="address" [(ngModel)]="entity.address" /></div>
+                                </div>
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-4"><label for="bank_name">Bank Name</label></div>
+                                    <div class="ui-grid-col-8"><input pInputText id="bank_name" [(ngModel)]="entity.bname" /></div>
+                                </div>
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-4"><label for="ac_no"># AC</label></div>
+                                    <div class="ui-grid-col-8"><input pInputText id="ac_no" [(ngModel)]="entity.acno" /></div>
+                                </div>
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-4"><label for="routing_no"># Routing</label></div>
+                                    <div class="ui-grid-col-8"><input pInputText id="routing_no" [(ngModel)]="entity.routingno" /></div>
+                                </div>
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-4"><label for="rules">Rules</label></div>
+                                    <div class="ui-grid-col-8"><input pInputText id="rules" [(ngModel)]="entity.rule"/></div>
+                                </div>
+                            </div>
+                            <p-footer>
+                                <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+                                    <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+                                    <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+                                </div>
+                            </p-footer>
+                        </p-dialog>
+
+                    </p-tabPanel>
+
+                    <p-tabPanel header="Add New Entity" leftIcon="ui-icon-view-agenda">
+
+
+                        <p-panel header="Add New Entity">
+
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="name">Entity Type:</label></div>
+                                <div class="ui-grid-col-8">
+                                    <p-dropdown [style]="{'width': '170px'}" [options]="entityType" [(ngModel)]="roleType" placeholder="Select a Role"></p-dropdown>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="name">Name:</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="name1" [(ngModel)]="name" /></div>
+                            </div>
+
+                            <br>
+
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="address">Address:</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="address1" [(ngModel)]="address" /></div>
+                            </div>
+
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="bank_name">Bank Name:</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="bank_name1" [(ngModel)]="bname" /></div>
+                            </div>
+
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="ac_no">AC #:</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="ac_no1" [(ngModel)]="acno" /></div>
+                            </div>
+
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="routing_no">Routing #:</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="routing_no1" [(ngModel)]="routingno" /></div>
+                            </div>
+
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="rules">Rule:</label></div>
+                                <div class="ui-grid-col-8">
+                                    <p-dropdown [style]="{'width': '170px'}" [options]="rules" [(ngModel)]="ruleType" placeholder="Select a Rule"></p-dropdown>
+                                </div>
+                            </div>
+
+                            <br>
+
+
+
+
+                            <p-dialog header="Confirm" [(visible)]="display" modal="modal" width="300" responsive="true">
+                                <p>Are you sure you want to add this Entity?</p>
+                                <p-footer>
+                                    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+                                        <button type="button" pButton icon="fa-close" (click)="display=false" label="No"></button>
+                                        <button type="button" pButton icon="fa-check" (click)="addEntity(roleType,name,address,bname,acno,routingno,ruleType);display=false" label="Yes"></button>
+                                    </div>
+                                </p-footer>
+                            </p-dialog>
+
+                            <button type="text" (click)="showDialog()" pButton class="ui-md-12" icon="ui-icon-send" label="Add Entity"></button>
+
+
+                            <!--<div>-->
+
+                            <!--<button pButton type="button" label="Add Entity" (click)="addEntity(roleType,name,address,bname,acno,routingno,ruleType)"></button>-->
+
+                            <!--</div>-->
+
+                        </p-panel>
+
+                    </p-tabPanel>
+
+                    <p-tabPanel header="Manage Entity Type" leftIcon="ui-icon-view-agenda">
+
+                        <p-panel header="Add New Entity Type">
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="roleName">Entity Type Name:</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="roleName" [(ngModel)]="rName"/></div>
+                            </div>
+
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="roleDesc">Entity Type Description:</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="roleDesc" [(ngModel)]="rDesc"/></div>
+                            </div>
+
+                            <br>
+
+                            <div>
+                                <button pButton class="ui-md-12"
+                                        type="button"
+                                        label="Add Entity Type"
+                                        icon="ui-icon-send"
+                                        (click)="addRole(rName, rDesc)"></button>
+
+                            </div>
+
+                        </p-panel>
+
+
+                        <br>
+
+                        <p-panel header="Type of Entity">
+
+                            <div *ngFor="let role of allRoles">
+
+                                <p-fieldset legend="{{role.roleName}}" [toggleable]="true" [collapsed]="true">
+
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-8">{{role.roleDesc}}</div>
+                                        <button pButton type="text" (click)="showDialog1(role.roleId)" label="Edit"></button>
+                                    </div>
+
+
+
+                                    <p-dialog header="Edit Role" modal="modal"  [(visible)]="displayRole" responsive="true">
+
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-4"><label for="DiaRoleName">Role Name:</label></div>
+                                            <div class="ui-grid-col-8"><input pInputText id="DiaRoleName" [(ngModel)]="currentRole.roleName"/></div>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-4"><label for="DiaRoleDesc">Role Description:</label></div>
+                                            <div class="ui-grid-col-8"><input pInputText id="DiaRoleDesc" [(ngModel)]="currentRole.roleDesc"/></div>
+                                        </div>
+
+                                        <br>
+
+
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6"><button pButton type="text" (click)="updateRole(currentRole.roleId, currentRole.roleName, currentRole.roleDesc)" label="Update"></button></div>
+                                            <div class="ui-grid-col-6"><button pButton type="text" (click)="deleteRole(currentRole.roleId)" label="Delete"></button></div>
+                                        </div>
+
+                                    </p-dialog>
+
+
+
+                                </p-fieldset>
+
+                            </div>
+                        </p-panel>
+
+                    </p-tabPanel>
+
+
+                </p-tabView>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

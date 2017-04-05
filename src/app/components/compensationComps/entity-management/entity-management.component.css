@@ -1,0 +1,4 @@
+.alignTextToCenter {
+    text-align: center !important;
+}
+td span > * { vertical-align: middle !important;}

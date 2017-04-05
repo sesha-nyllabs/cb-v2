@@ -1,0 +1,68 @@
+<p-carousel numVisible="3" headerText="Compensation and Billing Analytics" [value]="charts" responsive="true">
+    <template let-chart pTemplate="item">
+        <div class="ui-grid ui-grid-responsive">
+            <p-panel header={{chart.title}}>
+                <!--<p-chart type="{{chart.type}}"-->
+                         <!--[data]="chart.data"-->
+                         <!--[height]="250">-->
+                <!--</p-chart>-->
+            </p-panel>
+
+
+        </div>
+
+    </template>
+</p-carousel>
+
+<!--<p-chart type="bar" [data]="lapseNoticesChart"></p-chart>-->
+
+<div class="ui-g dashboard">
+    <p-growl [value]="uwNotification" (click)="onClickNotif()"></p-growl>
+
+
+
+    <div class="ui-g-12 ui-md-6 ui-lg-3">
+        <div class="ui-g card colorbox colorbox-1">
+            <div class="ui-g-4">
+                <i class="material-icons">check_circle</i>
+            </div>
+            <div class="ui-g-8">
+                <span class="colorbox-name">Bills Generated (March)</span>
+                <span class="colorbox-count">18798</span>
+            </div>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-3">
+        <div class="ui-g card colorbox colorbox-2">
+            <div class="ui-g-4">
+                <i class="material-icons">shopping_card</i>
+            </div>
+            <div class="ui-g-8">
+                <span class="colorbox-name">Agents Compensated</span>
+                <span class="colorbox-count">1200</span>
+            </div>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-3">
+        <div class="ui-g card colorbox colorbox-3">
+            <div class="ui-g-4">
+                <i class="material-icons">report</i>
+            </div>
+            <div class="ui-g-8">
+                <span class="colorbox-name">Pending Compensation</span>
+                <span class="colorbox-count">22</span>
+            </div>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-3">
+        <div class="ui-g card colorbox colorbox-4">
+            <div class="ui-g-4">
+                <i class="material-icons">email</i>
+            </div>
+            <div class="ui-g-8">
+                <span class="colorbox-name">Special Bill Requests</span>
+                <span class="colorbox-count">10</span>
+            </div>
+        </div>
+    </div>
+</div>

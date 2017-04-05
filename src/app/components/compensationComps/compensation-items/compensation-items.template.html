@@ -1,0 +1,92 @@
+<p-growl [value]="uwNotification" (click)="onClickNotif()"></p-growl>
+<div class="card">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <!-- start: Tab View -->
+            <p-growl [value]="msgs"></p-growl>
+
+            <h1>Compensation Items</h1>
+
+            <p-tabView>
+
+                <!--<div>-->
+
+                    <!--<h1>Compensation Items</h1>-->
+
+                <!--</div>-->
+                <p-tabPanel header="Pending Items" leftIcon="ui-icon-view-agenda">
+
+                    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+                        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                        <input #gb type="text" pInputText size="50" placeholder="Search for a compensation Item">
+                    </div>
+                    <p-dataTable [value]="pendingItems" [rows]="10" [paginator]="true" [globalFilter]="gb" #dt>
+                        <p-header>Completed Compensation Items</p-header>
+                        <p-column field="role" header="Role">
+
+                        </p-column>
+
+                        <p-column field="entity" header="Entity">
+
+                        </p-column>
+
+                        <p-column field="policiesCompensatedFor" header="Policies Compensated">
+
+                        </p-column>
+                        <p-column field="compensationAmt" header="Compensation Amount">
+
+                        </p-column>
+
+                        <p-column field="reasonForPending" header="Reason">
+
+                        </p-column>
+
+                        <p-column header="Action">
+                            <template let-comp="rowData" pTemplate type="body">
+
+                                <button pButton class="pull-right" type="button" (click)="payOutComp(comp)" label="Pay Out">
+                                </button>
+
+                            </template>
+                        </p-column>
+
+                    </p-dataTable>
+
+                </p-tabPanel>
+
+
+                <p-tabPanel header="Completed Items" leftIcon="ui-icon-view-agenda">
+
+                    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+                        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                        <input #gb type="text" pInputText size="50" placeholder="Search for a compensation Item">
+                    </div>
+                    <p-dataTable [value]="completedItems" [rows]="10" [paginator]="true" [globalFilter]="gb" #dt>
+                        <p-header>Completed Compensation Items</p-header>
+                        <p-column field="role" header="Role">
+
+                        </p-column>
+
+                        <p-column field="entity" header="Entity">
+
+                        </p-column>
+
+                        <p-column field="policiesCompensatedFor" header="Policies Compensated">
+
+                        </p-column>
+                        <p-column field="compensationAmt" header="Compensation Amount">
+
+                        </p-column>
+
+
+                    </p-dataTable>
+
+
+                </p-tabPanel>
+
+
+            </p-tabView>
+            <!--end: TabView-->
+        </div>
+    </div>
+</div>

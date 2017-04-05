@@ -1,0 +1,227 @@
+
+<div class="card">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <!-- start: Tab View -->
+
+
+            <!--<p-tabView>-->
+
+            <div>
+
+                <h1>Compensation Rules</h1>
+
+            </div>
+
+            <!-- Update Dialog -->
+            <p-dialog header="Edit Rule" modal="modal"  [(visible)]="display" responsive="true">
+
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-4">
+                        <label for="DiaRoleName">Role Name:</label>
+                    </div>
+                    <div class="ui-grid-col-8">
+                        <input pInputText id="DiaRoleName" [(ngModel)]="currentRule.ruleName"/>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-4"><label for="DiaRoleDesc">Role Description:</label></div>
+                    <div class="ui-grid-col-8"><input pInputText id="DiaRoleDesc" [(ngModel)]="currentRule.entity"/></div>
+                </div>
+
+                <br>
+
+                <button pButton type="text" (click)="updateRule(currentRule.ruleId, currentRule.ruleName, currentRule.entity)"
+                        class="ui-button-success"
+                        label="Update">
+                </button>
+
+            </p-dialog>
+
+
+
+
+
+
+
+
+
+            <p-panel header="Create New Rule">
+
+                <!-- div that has drop down and name-->
+                <div class="ui-g-6 ui-md-6">
+
+                    <!-- Select Entity dropdown -->
+                    <div class="ui-g-12">
+                        <p-dropdown [options]="entity"
+                                    [(ngModel)]="selectedEntity"
+                                    placeholder="Select a City" >
+                        </p-dropdown>
+                    </div>
+
+                    <!-- Rule name input -->
+                    <div class="ui-g-12">
+                                <span class="md-inputfield">
+                                    <input id="name"
+                                           [(ngModel)]="newRuleName"
+                                           type="text" pInputText />
+                                    <label for="name">Rule Name</label>
+                                </span>
+                    </div>
+
+
+                </div>
+
+
+                <!-- div that has years percentage and button-->
+                <div class="ui-g-6 ui-md-6">
+
+
+                    <div *ngFor="let yr of ruleYears" class="ui-g-12">
+                        <div class="ui-md-6">
+                                    <span class="md-inputfield">
+                                    <input id="year"
+                                           type="text"
+                                           [(ngModel)]="yr.premPercentage"
+                                           pInputText />
+                                    <label for="year">{{yr.yrName}}</label>
+                                </span>
+                        </div>
+
+
+                        <div class="ui-md-6">
+                            <button type="button"
+                                    *ngIf="yr.show"
+                                    (click)="addYear(yr.premPercentage)"
+                                    label="Add another year"
+                                    icon="ui-icon-send" pButton>
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Button to add input for another entry -->
+
+
+
+
+
+
+                </div>
+
+
+                <!-- create compensation rule button -->
+                <button
+                        class="ui-md-12"
+                        type="button"
+                        (click)="createRule(selectedEntity, newRuleName)"
+                        label="Create Rule"
+                        icon="ui-icon-send"
+                        pButton>
+                </button>
+
+            </p-panel>
+
+
+            <br>
+
+
+            <!-- Search Data table -->
+            <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                <input #gb type="text" pInputText size="50" placeholder="Search">
+            </div>
+
+            <!-- Data table -->
+            <p-dataTable selectionMode="single"
+                         data-placement="center"
+                         [value]="compensationRules"
+                         [pagintor]="true"
+                         class="alignTextToCenter"
+                         [globalFilter]="gb">
+
+                <p-column field="ruleName"
+                          data-placement="center"
+                          header="Rule Name"
+                          [sortable]="true">
+                </p-column>
+
+                <p-column field="entity"
+                          data-placement="center"
+                          header="Entity"
+                          [sortable]="true">
+                </p-column>
+
+
+                <p-column header="Premium Info"  data-placement="center" [sortable]="true">
+                    <template let-pr="rowData"
+                              pTemplate
+                              type="body">
+                        <a data-placement="center"
+                           data-toggle="tooltip">
+                            <div *ngFor="let pr of pr.premium">
+                                <b>Premium year</b> : {{pr.yr}}
+                                <br>
+                                <b>Premium percentage</b> : {{pr.premPercentage}}%
+                            </div>
+                        </a>
+                    </template>
+                </p-column>
+
+
+
+
+
+                <p-column *ngFor="let col of premium" [field]="col.yr" [header]="col.yr" [sortable]="true">
+                    <template let-row="rowData" pTemplate>
+                        <span>{{row[col.yr]}}</span>
+                    </template>
+                </p-column>
+
+
+                <p-column  header="Action">
+                    <template let-rule="rowData"
+                              pTemplate
+                              type="body">
+
+                        <button pButton class="pull-right"
+                                type="button"
+                                label="Edit"
+                                (click)="showDialog(rule)">
+                        </button>
+
+
+
+
+                        <button pButton
+                                class="pull-right"
+
+                                type="button"
+                                label="Delete"
+                                (click)="deleteRule(rule)">
+
+                        </button>
+                    </template>
+                </p-column>
+
+
+
+
+
+            </p-dataTable>
+
+
+
+
+
+
+            <!--</p-tabView>-->
+            <!--end: TabView-->
+        </div>
+    </div>
+</div>

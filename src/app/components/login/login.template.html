@@ -1,0 +1,39 @@
+<h1 style="text-align: center"> Welcome to NYL Ventures </h1>
+
+<form class="login card ui-fluid form-login">
+    <div class="ui-g">
+        <div class="ui-g-12 md-inputfield">
+            <span class="md-inputfield">
+                <input type="text" id="name" pInputText autocomplete="off"
+                       required name="name" class="ui-inputtext"
+                       >
+                <label>Username</label>
+            <!--<div [hidden]="name.valid || name.pristine" class="alert alert-danger">-->
+                <!--Username is required-->
+            <!--</div>-->
+            </span>
+        </div>
+        <div class="ui-g-12">
+            <span class="md-inputfield">
+                <input type="password" class="form-control password" id="password"
+                       pInputText autocomplete="off"
+                       required
+                       name="password" class="ui-inputtext"
+                       >
+                <label>Password</label>
+
+        <!--<div [hidden]="password.valid || password.pristine" class="alert alert-danger">-->
+            <!--Password is required-->
+        <!--</div>-->
+            </span>
+        </div>
+        <p-checkbox binary="true"></p-checkbox>
+        <div class="ui-g-12">
+            <button type="submit"
+                    class="ui-button button buttonBlue"
+                    pButton label="Sign In" >Sign In</button>
+
+        </div>
+    </div>
+
+</form>

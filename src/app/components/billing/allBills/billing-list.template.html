@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="ui-g">
+        <div class="ui-g-12">
+
+            <p-tabView>
+
+                <p-tabPanel header="Generated Bills List"
+                            data-placement="center"
+                            leftIcon="ui-icon-picture-as-pdf">
+
+                    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+                        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                        <input #gb type="text" pInputText size="50" placeholder="Search">
+                    </div>
+
+                    <p-dataTable selectionMode="single" data-placement="center" [value]="generatedBills"
+                                 [pagintor]="true" class="alignTextToCenter" [globalFilter]="gb">
+
+                        <p-column field="insured" data-placement="center" header="Insured Name" [sortable]="true">
+
+                        </p-column>
+
+                        <p-column field="premium" header="Amount Due" [sortable]="true">
+
+                        </p-column>
+
+                        <p-column field="email" header="Email ID" [sortable]="true">
+
+                        </p-column>
+
+                        <p-column field="s3url" header="Generated Bill">
+
+
+                            <template let-bill="rowData" pTemplate type="body">
+                                <button pButton class="pull-right" type="button" label="View Bill"
+                                        (click)="openBill(bill)"></button>
+                            </template>
+                        </p-column>
+
+
+                    </p-dataTable>
+                </p-tabPanel>
+
+            </p-tabView>
+            <!--end: TabView-->
+        </div>
+    </div>
+</div>

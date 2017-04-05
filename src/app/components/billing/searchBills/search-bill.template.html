@@ -1,0 +1,92 @@
+<div class="card" style="height: 600px">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <p-growl [value]="msgs"></p-growl>
+
+            <div>
+
+                <h1>Search Bills</h1>
+
+                <div style="padding:4px 10px;border-bottom: 0 none">
+                    <!--<i class="fa fa-search" style="margin:4px 4px 0 0"></i>-->
+                    <input #gb autofocus type="text" pInputText size="20" placeholder="Policy Id">
+
+                    <button type="button" pButton icon="fa-search" (click)="searchPolicy()"></button>
+
+
+                </div>
+
+                <br>
+                <br>
+
+                <p-panel *ngIf="show">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><b><label>Policy Number:</label></b></div>
+                                <div class="ui-grid-col-8">PLAP06fso1g</div>
+                            </div>
+
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><b><label for="desc">Policy Holder:</label></b></div>
+                                <div class="ui-grid-col-8">Bridget Rau</div>
+                            </div>
+
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><b><label for="desc">Email ID:</label></b></div>
+                                <div class="ui-grid-col-8">bridget.rau@gmail.com</div>
+                            </div>
+
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><b><label for="desc">Coverage Amount($):</label></b></div>
+                                <div class="ui-grid-col-8">200,000</div>
+                            </div>
+
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><b><label for="desc">Amount Due($):</label></b></div>
+                                <div class="ui-grid-col-8">300</div>
+                            </div>
+
+
+                            <br>
+
+
+                            <div>
+
+                                <button pButton type="button" label="View Bill" (click)="openBill()"></button>
+
+                                <!--<button pButton type="button" label="Email Bill to Customer" (click)="showSuccess()"></button>-->
+
+                                <p-dialog header="Confirm" [(visible)]="display" modal="modal" width="300" responsive="true">
+                                    <p>Are you sure you want to send bill to bridget.rau@gmail.com?</p>
+                                    <p-footer>
+                                        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+                                            <button type="button" pButton icon="fa-close" (click)="display=false" label="No"></button>
+                                            <button type="button" pButton icon="fa-check" (click)="showSuccess();display=false" label="Yes"></button>
+                                        </div>
+                                    </p-footer>
+                                </p-dialog>
+
+                                <button pButton type="button" label="Email Bill" (click)="showDialog()"></button>
+
+                            </div>
+
+                            <br>
+
+                        </div>
+                    </div>
+                </p-panel>
+
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
